@@ -14,3 +14,7 @@ The explored and processed wtih _sortMetadata.R_. This script produces:
 "SRR947272","NA","SRR947273","MML-1_rep1_L3_herm__SRR947272vSRR947273"
 ```
 
+"inputs" column contains multiple input files taht must always be merged.
+"ips2merge" column contains multiple ips from same sample that must be merged
+"ips" contains 1 or more ips taht must each be mapped separately to the inputs. If "NA" that is because merged ips should be mapped. 
+"basename" is a descriptive name for output files (SRR numbers ensure that badly numbered replicates are not overwritten). 
