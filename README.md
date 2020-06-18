@@ -1,6 +1,6 @@
 # PRJNA63455
 Modencode epigenetics data set. 
-3
+
 Full meta-data table for PRJNA63455 modEncode epigenetics downloaded from www (**_SraRunTable-PRJNA63455.txt_**)
 
 The explored and processed wtih _sortMetadata.R_. This script produces:
