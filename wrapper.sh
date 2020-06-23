@@ -12,8 +12,8 @@ SRR_exp=$(awk -F ";" 'NR=="'$SRR_line_number'" {print $3}' $file_name | tr ';' '
 SRR_IP=$(awk -F ";" 'NR=="'$SRR_line_number'" {print $2}' $file_name |  tr ';' ' ' | tr '"' ' ' | tr -s ' ')
 SRR_input=$(awk -F ";" 'NR=="'$SRR_line_number'" {print $1}' $file_name  | tr ';' ' ' | tr '"' ' ' | tr -s ' ')
 echo "Experiment name $SRR_exp"
-echo "IP SRR: $SRR_IP"
 echo "input SRR: $SRR_input"
+echo "IP SRR: $SRR_IP"
 echo "-------------------------------"
 #create folder for SRR download
 [ ! -d $SRR_exp ] && mkdir $SRR_exp
@@ -41,5 +41,3 @@ rm trimmed_fq/*.fq.gz
 rm -r bam
 cd ..
 echo "This is over"
-
-
