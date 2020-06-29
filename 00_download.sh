@@ -5,8 +5,8 @@ module add UHTS/Analysis/sratoolkit/2.10.7;
 #$2 is the SRR numbers of the IP dataset to map
 #$3 is the SRR numbers of the input datasets to map
 SRR_exp=$1
-SRR_IP=$2
-SRR_input=$3
+SRR_IP=($2)
+SRR_input=($3)
 echo $1
 echo $2
 echo $3
@@ -15,12 +15,19 @@ echo $3
 [ ! -d $SRR_exp/SRR_download/IP ] && mkdir $SRR_exp/SRR_download/IP
 [ ! -d $SRR_exp/SRR_download/input ] && mkdir $SRR_exp/SRR_download/input
 echo "Downloading IP: $SRR_IP"
-prefetch -O $SRR_exp/SRR_download/IP/ -o $SRR_IP.srr $SRR_IP
-fasterq-dump -O $SRR_exp/SRR_download/IP -t ./tmp/ $SRR_IP.srr
+for i in "${SRR_IP[@]}"
+do
+   echo $i
+   prefetch -O $SRR_exp/SRR_download/IP/ -o $i.srr $i
+   fasterq-dump -O $SRR_exp/SRR_download/IP -t ./tmp/ $i.srr
+done
 #fastq-dump -gzip -O $SRR_exp/SRR_download/IP $SRR_IP
 echo "Downloading input: $SRR_input"
-prefetch -O $SRR_exp/SRR_download/input -o $SRR_input.srr $SRR_input
-fasterq-dump -O $SRR_exp/SRR_download/input -t ./tmp/ $SRR_input.srr
+for i in "${SRR_input[@]}"
+do
+   prefetch -O $SRR_exp/SRR_download/input -o $i.srr $i
+   fasterq-dump -O $SRR_exp/SRR_download/input -t ./tmp/ $i.srr
+done
 #fastq-dump -gzip -O $SRR_exp/SRR_download/input $SRR_input
 echo "This is over"
 
